@@ -13,7 +13,7 @@ public:
             {
                 while (head->next != NULL && head->val == head->next->val)
                     head = head->next;
-                prev->next = head->next; // add  all unique elements in prev->next,it's mean we add in head
+                prev->next = head->next; 
             }
             else
                 prev = head;
