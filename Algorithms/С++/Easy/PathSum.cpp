@@ -13,7 +13,7 @@ public:
 
 		int sum = 0;
 		sum -= root->data;
-		if (sum == targetSum)
+		if (!root->left && !root->right && sum == targetSum)
 			return true;
 
 		if (root->left)
