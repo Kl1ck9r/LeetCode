@@ -15,6 +15,7 @@ Output: [1,2]
 */
 
 
+// first way
 class Solution {
 public:
     ListNode* partition(ListNode* head, int x) {
@@ -63,5 +64,39 @@ public:
         }
 
         return lessNodeHead;
+    }
+};
+
+
+// second way
+class Solution {
+public:
+    ListNode* partition(ListNode* head, int x) {
+        if(head == nullptr) {
+            return nullptr;
+        }
+
+        ListNode *large = new ListNode(-1);
+        ListNode *small = new ListNode(-1);
+        ListNode *smallHead = small;
+        ListNode *largeHead = large;
+
+        while(head) {
+            if(head->val<x) {
+                small->next = head;
+                small = small->next;
+                head = head->next;
+                small->next = nullptr;
+            } else {
+                large->next = head;
+                large = large->next;
+                head = head->next;
+                large->next = nullptr;
+            }
+        }
+
+        small->next = largeHead->next;
+
+        return smallHead->next;
     }
 };
